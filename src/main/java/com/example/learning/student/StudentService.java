@@ -3,11 +3,12 @@ package com.example.learning.student;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class StudentService {
-
   public List<Student> getAllStudents() {
     Student james = new Student(
         1,
@@ -25,6 +26,6 @@ public class StudentService {
         "b@gmail.com"
     );
 
-    return List.of(james, jessica);
+    return new ArrayList<>(Arrays.asList(james, jessica));
   }
 }
