@@ -1,5 +1,5 @@
 // Styles
-import { PageContainer, FlexStartCenter } from 'shared/styles'
+import { PageContainer, Content, FlexStartCenter } from 'shared/styles'
 import { Header } from './style'
 
 // Components
@@ -23,6 +23,10 @@ export default function Landing() {
           </ActionButton>
         </FlexStartCenter>
       </Header>
+
+      <Content>
+        <Typography variant={"body1"}>Not logged in :(</Typography>
+      </Content>
     </PageContainer>
   )
 }
