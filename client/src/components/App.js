@@ -1,24 +1,13 @@
-import { useEffect } from 'react';
+import { BrowserRouter } from "react-router-dom";
+import 'typeface-roboto';
 
-function App() {
-    useEffect(() => {
-        const asyncFetchStudents = async () => {
-            const resp = await fetch('http://localhost:8080/api/v1/student')
-            console.log('resp', resp)
+// Utils
+import routes from 'utils/routes'
 
-            const result = await resp.json()
-
-            console.log('result', result)
-        }
-
-        asyncFetchStudents();
-    }, [])
-
+export default function App() {
   return (
-    <div className="App">
-      <p>Hello Worlddddddd</p>
-    </div>
-  );
+    <BrowserRouter>
+      {routes}
+    </BrowserRouter>
+  )
 }
-
-export default App;
