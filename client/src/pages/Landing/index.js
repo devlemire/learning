@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 // Styles
 import { PageContainer, Content, FlexStartCenter } from 'shared/styles'
 import { Header } from './style'
@@ -7,7 +9,14 @@ import { Typography } from '@material-ui/core'
 import ActionText from 'components/ActionText'
 import ActionButton from "components/ActionButton";
 
-export default function Landing() {
+// Redux
+import { connect } from 'react-redux'
+
+function Landing({
+  // Redux
+  userFetched,
+  user
+}) {
   return (
     <PageContainer>
       <Header>
@@ -25,8 +34,22 @@ export default function Landing() {
       </Header>
 
       <Content>
-        <Typography variant={"body1"}>Not logged in :(</Typography>
+        <Typography variant={"body1"}>{userFetched ? user?.firstName : "Loading..."}</Typography>
       </Content>
     </PageContainer>
   )
 }
+
+Landing.propTypes = {
+  userFetched: PropTypes.bool.isRequired,
+  user: PropTypes.object
+}
+
+export default connect(state => {
+  const { auth } = state;
+
+  return {
+    ...auth
+  }
+}, {})(Landing)
+
